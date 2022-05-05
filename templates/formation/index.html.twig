@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Formations{% endblock %}
+
+{% block body %}
+<div class="info-head">
+<p>Il y a {{ formations | length }} formations</p>
+</div>
+<div class="box-tab">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nom</th>
+      </tr>
+    </thead>
+    <tbody>
+          {% for formation in formations %}
+          <tr>
+              <td><a href="{{ path('detail_formation', {'id': formation.id}) }}">{{ formation.nomFormation}}</a></td>
+
+          </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

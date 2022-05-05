@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Session {{session.intituleSession}}{% endblock %}
+
+{% block body %}
+<h1>{{session.intituleSession}}</h1>
+
+<p><b>Début : {{session.dateDebut | date('d-m-Y') }}</b></p>
+<p><b>Fin : {{session.dateFin | date('d-m-Y') }}</b></p>
+
+<p><b>{{session.nbPlace}} Places Maximum</p></b> 
+<p>{{ session.nbPlacesRestantes }} Places restantes</p>
+
+
+<h3>Liste des participiants :</h3>
+{% for stagiaire in session.stagiaires %}
+  <a href="{{ path('detail_stagiaire', {'id': stagiaire.id}) }}">  {{ stagiaire }} </a> <br>
+{% endfor %}
+
+<h3>Programme :</h3>
+{% for programme in session.sessionProgrammes %}
+    {{ programme.cours }} ({{ programme.nbJoursCours }} jours)<br>
+{% endfor %}
+
+<h3>Ajouter un participant</h3>
+
+    <form action="" method="post">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+            <th>Liste des participants</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for stagiaire in stagiaires %}
+            <tr>
+            <td>{{ stagiaire }} <a href=""><button>Ajouter</button></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+</select>
+
+{% endblock %}
